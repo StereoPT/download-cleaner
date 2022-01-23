@@ -18,5 +18,8 @@
   "homepage": "https://github.com/StereoPT/download-cleaner#readme",
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
   }
 }
