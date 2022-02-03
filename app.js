@@ -4,7 +4,7 @@ const config = require('./config.json');
 
 const PARSED_DOWNLOADS = path.parse(config.downloads_folder_location);
 const DOWNLOADS_PATH = path.join(PARSED_DOWNLOADS.dir, PARSED_DOWNLOADS.name);
-const SORTING_FOLDERS = config.sorting_folders;
+const FOLDERS = Object.keys(config.folders);
 
 console.log("[Download Cleaner]");
 
@@ -15,7 +15,7 @@ const isFile = (fileName) => {
 }
 
 // Setup Sorting Folders
-for(const folder of SORTING_FOLDERS) {
+for(const folder of FOLDERS) {
   const sortFolder = path.join(DOWNLOADS_PATH, folder);
   console.log(" -> " + sortFolder);
   if(!fs.existsSync(sortFolder)) {
@@ -31,13 +31,14 @@ const downloadFiles = fs.readdirSync(DOWNLOADS_PATH).filter(isFile);
 for(const file of downloadFiles) {
   console.log(" -> Checking: " + file);
   const currentPath = path.join(DOWNLOADS_PATH, file);
-  const extension = path.extname(file);
-  // console.log(extension);
-  if(extension == ".pdf") {
-    const newPath = path.join(DOWNLOADS_PATH, 'Documents', file);
-    fs.moveSync(currentPath, newPath);
-  } else if(extension == ".jpeg") {
-    const newPath = path.join(DOWNLOADS_PATH, 'Images', file);
-    fs.moveSync(currentPath, newPath);
+  const extension = path.extname(file).toLocaleLowerCase();
+
+  for(const folder of FOLDERS) {
+    const ext = config.folders[folder];
+
+    if(ext.includes(extension)) {
+      const newPath = path.join(DOWNLOADS_PATH, folder, file);
+      fs.moveSync(currentPath, newPath);
+    }
   }
 }

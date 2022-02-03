@@ -1,7 +1,7 @@
 {
   "downloads_folder_location": "C:/Users/GuidoSP/Downloads",
-  "sorting_folders": [
-    "Documents",
-    "Images"
-  ]
+  "folders": {
+    "Documents": [ ".pdf" ],
+    "Images": [ ".jpeg", ".png", ".jpg" ]
+  }
 }
