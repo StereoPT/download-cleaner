@@ -1,6 +1,6 @@
-const fs = require('fs-extra');
-const path = require('path');
-const config = require('./config.json');
+import fs from 'fs-extra';
+import path from 'path';
+import { config } from '../config.js';
 
 const PARSED_DOWNLOADS = path.parse(config.downloads_folder_location);
 const DOWNLOADS_PATH = path.join(PARSED_DOWNLOADS.dir, PARSED_DOWNLOADS.name);

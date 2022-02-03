@@ -2,9 +2,10 @@
   "name": "download-cleaner",
   "version": "1.0.0",
   "description": "download-cleaner",
-  "main": "app.js",
+  "main": "./src/app.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon ./src/app.js"
   },
   "repository": {
     "type": "git",
