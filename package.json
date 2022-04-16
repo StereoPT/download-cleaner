@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "download-cleaner",
   "main": "./src/app.js",
+  "bin": {
+    "clean": "./bin/cleaner.js"
+  },
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/app.js"
